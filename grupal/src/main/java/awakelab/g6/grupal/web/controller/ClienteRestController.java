@@ -2,6 +2,7 @@ package awakelab.g6.grupal.web.controller;
 
 import awakelab.g6.grupal.model.domain.dto.Customer;
 import awakelab.g6.grupal.model.domain.dto.Training;
+import awakelab.g6.grupal.model.domain.dto.User;
 import awakelab.g6.grupal.model.persistence.entity.Cliente;
 import awakelab.g6.grupal.web.service.ClienteService;
 import org.springframework.http.HttpStatus;
@@ -23,5 +24,11 @@ public class ClienteRestController {
   public ResponseEntity<List<Customer>> findAll() {
     return service.findAll().map(customer -> new ResponseEntity<>(customer, HttpStatus.OK))
             .orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND));
+  }
+  @PostMapping("/create")
+  public ResponseEntity<Customer> create(@RequestBody Customer customer){
+    return service.create(customer)
+            .map(t-> new ResponseEntity<>(t, HttpStatus.CREATED))
+            .orElse(new ResponseEntity<>(HttpStatus.CONFLICT));
   }
 }

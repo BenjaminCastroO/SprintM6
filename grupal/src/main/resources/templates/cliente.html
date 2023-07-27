@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.com">
+<head>
+  <meta charset="UTF-8">
+  <title>Bienvenido - Cliente</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+</head>
+<body>
+<div class="container">
+  <div th:replace="menu :: navegacion"></div>
+
+  <div class="col">
+    <a href="/cliente/listar" class="btn btn-secondary">Mostar clientes</a>
+  </div>
+
+  <div class="container">
+    <h2>Crear Cliente</h2>
+  </div>
+  <div class="container">
+    <form class="form" method="post" th:action="@{/cliente/create}">
+      <div class="row">
+          <div class="row">
+            <div class="col">
+              <label class="form-label" for="name">Nombre:</label>
+              <input th:if="${op=='c'}" class="form-control" type="text"
+                     id="name" name="name">
+            </div>
+          </div>
+
+        <div class="row">
+          <div class="col">
+            <label class="form-label" for="lastName">Apellido:</label>
+            <input th:if="${op=='c'}" class="form-control" type="text"
+                   id="lastName" name="lastName">
+          </div>
+        </div>
+        <div class="row">
+          <div class="col">
+            <label class="form-label" for="username">Username:</label>
+            <input th:if="${op=='c'}" class="form-control" type="text"
+                   id="username" name="username">
+          </div>
+        </div>
+        <div class="row">
+          <div class="col">
+            <label class="form-label" for="password">Password:</label>
+            <input th:if="${op=='c'}" class="form-control" type="password"
+                   id="password" name="password">
+          </div>
+        </div>
+        <div class="row">
+          <div class="col">
+            <label class="form-label" for="rut">RUT:</label>
+            <input th:if="${op=='c'}" class="form-control" type="text"
+                   id="rut" name="rut">
+          </div>
+        </div>
+        <div class="row">
+          <div class="col">
+            <label class="form-label" for="mail">e-mail:</label>
+            <input th:if="${op=='c'}" class="form-control" type="text"
+                   id="mail" name="mail">
+          </div>
+        </div>
+        <div class="row">
+          <div class="col">
+            <label class="form-label" for="telephone">Teléfono:</label>
+            <input th:if="${op=='c'}" class="form-control" type="text"
+                   id="telephone" name="telephone">
+          </div>
+        </div>
+        <div class="row">
+          <div class="col">
+            <label class="form-label" for="afp">AFP:</label>
+            <input th:if="${op=='c'}" class="form-control" type="text"
+                   id="afp" name="afp">
+          </div>
+        </div>
+        <div class="row">
+          <div class="col">
+            <label class="form-label" for="healthcare">Sistema de Salud:</label>
+            <select th:if="${op=='c'}" class="form-select" id="healthcare" name="healthcare"
+                    aria-label="Default select example">
+              <option  disabled selected>Selecionar Sistema</option>
+              <option  value="isapre">Isapre</option>
+              <option  value="fonasa">Fonasa</option>
+            </select>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col">
+            <label class="form-label" for="direction">Direccion:</label>
+            <input th:if="${op=='c'}" class="form-control" type="text"
+                   id="direction"
+                   name="direction">
+          </div>
+        </div>
+        <div class="row">
+          <div class="col">
+            <label class="form-label" for="district">Comuna:</label>
+            <input th:if="${op=='c'}" class="form-control" type="text"
+                   id="district" name="district">
+          </div>
+        </div>
+        <div class="row">
+          <div class="col">
+            <label class="form-label" for="age">Edad:</label>
+            <input th:if="${op=='c'}" class="form-control" type="number"
+                   id="age" name="age">
+          </div>
+        </div>
+
+        <div class="row pt-4">
+          <div class="col">
+            <a href="${pageContext.request.contextPath}/" class="btn btn-secondary">Volver</a>
+          </div>
+          <div class="col">
+            <button id = "enviar" name= "enviar" value = "cliente" type="submit" class="btn btn-primary">Guardar</button>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+
+  <div th:replace="footer :: footer"></div>
+</div>
+</body>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</html>

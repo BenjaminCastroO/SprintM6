@@ -2,6 +2,7 @@ package awakelab.g6.grupal.model.domain.service;
 
 import awakelab.g6.grupal.model.domain.dto.Customer;
 import awakelab.g6.grupal.model.domain.dto.Training;
+import awakelab.g6.grupal.model.domain.dto.User;
 import awakelab.g6.grupal.model.persistence.mapper.CustomerMapper;
 import awakelab.g6.grupal.model.persistence.repository.ClienteRepository;
 import awakelab.g6.grupal.web.service.ClienteService;
@@ -29,5 +30,9 @@ public class ClienteServiceImpl implements ClienteService {
   @Override
   public Optional<Customer> findById(int id) {
     return repository.findById(id).map(mapper::toCustomer);
+  }
+  @Override
+  public Optional<Customer> create(Customer customer){
+    return Optional.of(mapper.toCustomer(repository.save(mapper.toCliente(customer))));
   }
 }

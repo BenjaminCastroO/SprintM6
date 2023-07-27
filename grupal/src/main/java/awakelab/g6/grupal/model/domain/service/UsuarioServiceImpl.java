@@ -1,5 +1,6 @@
 package awakelab.g6.grupal.model.domain.service;
 
+import awakelab.g6.grupal.model.domain.dto.Training;
 import awakelab.g6.grupal.model.domain.dto.User;
 import awakelab.g6.grupal.model.persistence.mapper.UserMapper;
 import awakelab.g6.grupal.model.persistence.repository.UsuarioRepository;
@@ -28,5 +29,9 @@ public class UsuarioServiceImpl implements UsuarioService {
   @Override
   public Optional<User> findById(int id) {
     return repository.findById(id).map(mapper::toUser);
+  }
+  @Override
+  public Optional<User> create(User user){
+    return Optional.of(mapper.toUser(repository.save(mapper.toUsuario(user))));
   }
 }
