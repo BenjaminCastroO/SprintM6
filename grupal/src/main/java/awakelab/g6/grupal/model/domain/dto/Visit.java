@@ -12,12 +12,13 @@ import java.util.Date;
 @ToString
 public class Visit {
     private int id;
-    private Customer customer;
     private Date date;
     private Time time;
     private String place;
     private boolean done;
     private String detail;
-    private int profesionalId;
+    private Professional professional;
+    private Customer customer;
+
 
 }

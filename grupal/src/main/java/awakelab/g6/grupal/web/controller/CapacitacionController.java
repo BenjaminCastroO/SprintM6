@@ -35,6 +35,7 @@ private final CapacitacionRestController capacitacionRestController;
 @GetMapping
 public String listCapacitaciones(Model model){
   List<Training> trainings = capacitacionRestController.findAll().getBody();
+    System.out.println(trainings);
   model.addAttribute("trainings",trainings);
   return "listCapacitaciones";
 }

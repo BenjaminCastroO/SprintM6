@@ -1,7 +1,6 @@
 package awakelab.g6.grupal.web.service;
 
 import awakelab.g6.grupal.model.domain.dto.Visit;
-import org.springframework.context.annotation.Bean;
 
 import java.util.List;
 import java.util.Optional;

@@ -25,19 +25,21 @@
             <th>Lugar</th>
             <th>Realizado</th>
             <th>Detalle</th>
-            <th>Id Profesional</th>
+            <th>Nombre Profesional</th>
         </tr>
         </thead>
         <tbody>
             <tr th:each ="visit: ${visits}">
                 <td th:text="${visit.getId()}"></td>
-                <td th:text="${visit.getCustomer().getName()}"></c:out></td>
+                <td th:text="${visit.getCustomer().getName()} + ' ' + ${visit.getCustomer.getLastName()}"></td>
                 <td th:text="${#dates.format(visit.getDate(), 'dd-MM-yyyy')}"></td>
                 <td th:text="${#dates.format(visit.getTime(), 'HH:mm')}"></td>
                 <td th:text="${visit.getPlace()}"></td>
                 <td th:text="${visit.isDone()}"></td>
                 <td th:text="${visit.getDetail()}"></td>
-                <td th:text="${visit.getProfesionalId()}"></td>
+                <td th:text="${visit.getProfessional().getName()} + ' ' + ${visit.getProfessional().getLastName()}"></td>
+
+
             </tr>
         </th:each>
         </tbody>

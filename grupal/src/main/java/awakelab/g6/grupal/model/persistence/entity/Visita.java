@@ -1,21 +1,17 @@
 package awakelab.g6.grupal.model.persistence.entity;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+
 
 import java.sql.Time;
 import java.util.Date;
 
 @Entity
-@Table(name = "visita" )
-
+@Table(name ="visita")
 public class Visita {
-@Id
-@GeneratedValue(strategy = GenerationType.IDENTITY)
-@Column(name="id")
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name="id")
     private int id;
     @Column(name="fecha")
     private Date fecha;
@@ -27,8 +23,9 @@ public class Visita {
     private boolean realizado;
     @Column(name="detalle")
     private String detalle;
-    @Column(name="profesional_id")
-    private int profesionalId;
+    @ManyToOne
+    @JoinColumn(name="profesional_id", insertable = true, updatable = false)
+    private Profesional profesional;
     @ManyToOne
     @JoinColumn(name = "cliente_id", insertable = true, updatable = false)
     private Cliente cliente;
@@ -36,15 +33,23 @@ public class Visita {
     public Visita() {
     }
 
-    public Visita(int id, Date fecha, Time hora, String lugar, boolean realizado, String detalle, int profesionalId, Cliente cliente) {
+    public Visita(int id, Date fecha, Time hora, String lugar, boolean realizado, String detalle,  Profesional profesional, Cliente cliente) {
         this.id = id;
         this.fecha = fecha;
         this.hora = hora;
         this.lugar = lugar;
         this.realizado = realizado;
         this.detalle = detalle;
-        this.profesionalId = profesionalId;
+        this.profesional = profesional;
         this.cliente = cliente;
+    }
+
+    public Profesional getProfesional() {
+        return profesional;
+    }
+
+    public void setProfesional(Profesional profesional) {
+        this.profesional = profesional;
     }
 
     public int getId() {
@@ -93,14 +98,6 @@ public class Visita {
 
     public void setDetalle(String detalle) {
         this.detalle = detalle;
-    }
-
-    public int getProfesionalId() {
-        return profesionalId;
-    }
-
-    public void setProfesionalId(int profesionalId) {
-        this.profesionalId = profesionalId;
     }
 
     public Cliente getCliente() {
