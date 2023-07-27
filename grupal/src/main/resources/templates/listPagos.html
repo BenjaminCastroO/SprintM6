@@ -2,7 +2,7 @@
 <html lang="es" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Bienvenidos - Lista de Chequeos</title>
+    <title>Bienvenidos - Lista de Pagos</title>
     <link rel="stylesheet" href="/css/style.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
     <link href="https://cdn.datatables.net/1.13.5/css/jquery.dataTables.min.css" rel="stylesheet">
@@ -12,25 +12,25 @@
     <div th:replace="~{menu :: navegacion}"></div>
 
     <div class="container ">
-        <h2>Lista de Chequeos</h2>
+        <h2>Lista de Pagos</h2>
     </div>
     <div class = "col pt-4"></div>
-    <table class="table pt-4  table-bordered dataTable" id ="chequeos">
+    <table class="table pt-4  table-bordered dataTable" id ="pays">
         <thead class="table-dark pt-4">
         <tr>
             <th>Id</th>
-            <th>Detalle Chequeo</th>
-            <th>Estado</th>
-            <th>Detalle Visita</th>
+            <th>Nombre Cliente</th>
+            <th>Monto</th>
+            <th>Fecha de Pago</th>
 
         </tr>
         </thead>
         <tbody>
-            <tr th:each ="check: ${chequeos}">
-                <td th:text="${check.getId()}"></td>
-                <td th:text="${check.getDetail()}"></td>
-                <td th:text="${check.getStatus()}"></td>
-                <td th:text="${check.getVisit().getDetail()}"></td>
+            <tr th:each ="pay: ${pays}">
+                <td th:text="${pay.getId()}"></td>
+                <td th:text="${pay.getCustomer().getName}  + ' ' + ${pay.getCustomer.getLastName()}"></td>
+                <td th:text="'$ ' + ${pay.getAmount()} "></td>
+                <td th:text="${#dates.format(pay.getPayDay(), 'dd-MM-yyyy')}"></td>
 
 
             </tr>
@@ -45,7 +45,7 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js" integrity="sha384-fbbOQedDUMZZ5KreZpsbe1LCZPVmfTnH7ois6mU1QK+m14rQ1l2bGBq41eYeM/fS" crossorigin="anonymous"></script>
 <script>
     $(document).ready(function() {
-        $('#chequeos').DataTable();
+        $('#pays').DataTable();
     });
 </script>
 </body>
