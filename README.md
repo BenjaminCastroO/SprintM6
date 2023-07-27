@@ -31,7 +31,7 @@ Además de los casos de uso iniciales, se han desarrollado las siguientes funcio
 
 11. **Listado de Visitas:** Muestra un listado de todas las visitas realizadas por los profesionales a las empresas clientes.
 
-12. **Responder Checklist:** Permite a los profesionales responder checklists durante las visitas a las empresas para evaluar riesgos y medidas de prevención.
+12. **Responder Checklist:** Muestra un listado de todos las chequeos realizados por los profesionales en sus visitas.
 
 13. **Listado de Pago:** Muestra un listado de todos los pagos realizados por los clientes por los servicios de prevención de riesgos.
 
