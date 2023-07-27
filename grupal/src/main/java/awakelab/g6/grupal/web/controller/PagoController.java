@@ -60,8 +60,9 @@ return "listPagos";
         pay.setPayDay(Date.valueOf(request.getParameter("dates")));
         pay.setCustomer(service2.findById(Integer.parseInt(request.getParameter(
                 "customerId"))).orElse(null));
-        System.out.println(pagoRestController.create(pay).getBody());
-        return "listPagos";
+        pagoRestController.create(pay).getBody();
+
+        return "redirect:/pago";
     }
 
 }

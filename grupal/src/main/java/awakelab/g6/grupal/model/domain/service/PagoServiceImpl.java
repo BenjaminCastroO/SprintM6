@@ -30,6 +30,6 @@ public class PagoServiceImpl implements PagoService {
 
     @Override
     public Optional<Pay> create(Pay pay) {
-        return Optional.empty();
+        return Optional.of(mapper.toPay(repository.save(mapper.toPago(pay))));
     }
 }
