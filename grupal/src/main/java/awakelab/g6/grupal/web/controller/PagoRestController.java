@@ -1,15 +1,14 @@
 package awakelab.g6.grupal.web.controller;
 
 import awakelab.g6.grupal.model.domain.dto.Pay;
+import awakelab.g6.grupal.model.domain.dto.Training;
 import awakelab.g6.grupal.model.domain.dto.Visit;
 import awakelab.g6.grupal.web.service.ClienteService;
 import awakelab.g6.grupal.web.service.PagoService;
 import awakelab.g6.grupal.web.service.VisitaService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -30,6 +29,11 @@ public class PagoRestController {
             .orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND));
   }
 
-
+  @PostMapping("/create")
+  public ResponseEntity<Pay> create(@RequestBody Pay pay){
+    return service.create(pay)
+            .map(p-> new ResponseEntity<>(p, HttpStatus.CREATED))
+            .orElse(new ResponseEntity<>(HttpStatus.CONFLICT));
+  }
 
 }
