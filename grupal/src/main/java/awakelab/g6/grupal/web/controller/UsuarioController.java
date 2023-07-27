@@ -5,12 +5,11 @@ import awakelab.g6.grupal.model.domain.dto.Training;
 import awakelab.g6.grupal.model.domain.dto.User;
 import awakelab.g6.grupal.web.service.UsuarioService;
 import jakarta.servlet.http.HttpServletRequest;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 import java.sql.Date;
 import java.sql.Time;
@@ -44,6 +43,17 @@ private final UsuarioRestController usuarioRestController;
     @PostMapping("/create")
     public String create(@ModelAttribute User user, HttpServletRequest request){
         usuarioRestController.create(user);
-        return "listCapacitaciones";
+        return "listUsuarios";
+    }
+    @GetMapping ("/update")
+    public String updateUsuario(Model model){
+        String op = "u";
+        model.addAttribute("op",op);
+        return "usuario";
+    }
+    @PostMapping("/update")
+    public String update(@ModelAttribute User user, HttpServletRequest request){
+        usuarioRestController.update(user);
+        return "listUsuarios";
     }
 }

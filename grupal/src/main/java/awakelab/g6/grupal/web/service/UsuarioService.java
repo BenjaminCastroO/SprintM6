@@ -10,4 +10,5 @@ public interface UsuarioService {
 Optional<List<User>> findAll();
 Optional<User> findById(int id);
 Optional<User> create(User user);
+Optional<User> update(User user);
 }

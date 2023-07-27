@@ -30,4 +30,10 @@ public class UsuarioRestController {
             .map(t-> new ResponseEntity<>(t, HttpStatus.CREATED))
             .orElse(new ResponseEntity<>(HttpStatus.CONFLICT));
   }
+  @PatchMapping("/update")
+  public ResponseEntity<User> update(@RequestBody User user){
+    return service.update(user)
+            .map(t -> new ResponseEntity<>(t, HttpStatus.OK))
+            .orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND));
+  }
 }
