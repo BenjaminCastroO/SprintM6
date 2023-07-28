@@ -44,7 +44,7 @@ private final UsuarioRestController usuarioRestController;
     @PostMapping("/c")
     public String create(@ModelAttribute User user, HttpServletRequest request){
         usuarioRestController.create(user);
-        return "listUsuarios";
+        return "redirect:/usuario";
     }
 
     @GetMapping("/u/{Id}")

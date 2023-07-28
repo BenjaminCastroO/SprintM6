@@ -49,7 +49,7 @@ private final UsuarioRestController usuarioRestController;
                          HttpServletRequest request){
         administrative.setUserId(usuarioRestController.create(user).getBody().getId());
         administrativoRestController.create(administrative);
-        return "administrativo";
+        return "redirect:/administrativo";
     }
     @GetMapping("/u/{Id}")
     public String editAdmin(@PathVariable int Id, Model model){

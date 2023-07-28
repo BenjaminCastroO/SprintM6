@@ -46,7 +46,7 @@ private final UsuarioRestController usuarioRestController;
                          HttpServletRequest request){
         customer.setUserId(usuarioRestController.create(user).getBody().getId());
         clienteRestController.create(customer);
-        return "cliente";
+        return "redirect:/cliente";
     }
     @GetMapping("/u/{Id}")
     public String editCliente(@PathVariable int Id
