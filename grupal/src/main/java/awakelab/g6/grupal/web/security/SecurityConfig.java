@@ -18,19 +18,30 @@ import org.springframework.security.web.SecurityFilterChain;
 public class SecurityConfig {
   @Bean
   public InMemoryUserDetailsManager userDetailsManager(PasswordEncoder encoder){
-    UserDetails user = User.withUsername("user").password(encoder.encode(
-            "hola1234")).roles("USER").build();
+    UserDetails cliente = User.withUsername("cliente").password(encoder.encode(
+            "hola1234")).roles("CLIENTE").build();
 
-    UserDetails admin = User.withUsername("admin").password(encoder.encode(
-            "chao4321")).roles("USER","ADMIN").build();
-    return new InMemoryUserDetailsManager(user,admin);
+    UserDetails administrativo = User.withUsername("administrativo").password(encoder.encode(
+            "hola1234")).roles("ADMINISTRATIVO").build();
+
+    UserDetails profesional = User.withUsername("profesional").password(encoder.encode(
+            "hola1234")).roles("PROFESIONAL").build();
+    return new InMemoryUserDetailsManager(cliente,administrativo,profesional);
   }
 
   @Bean
   public SecurityFilterChain filterChain(HttpSecurity http)throws Exception{
     http.authorizeRequests()
-            .requestMatchers("/capacitacion").hasAnyRole("USER","ADMIN")
-            .requestMatchers("/api/cliente").hasRole("ADMIN")
+            .requestMatchers("/capacitacion/**").hasRole("CLIENTE")
+            .requestMatchers("/contacto/**").hasRole("CLIENTE")
+            .requestMatchers("/usuario/**").hasRole("ADMINISTRATIVO")
+            .requestMatchers("/cliente/**").hasRole("ADMINISTRATIVO")
+            .requestMatchers("/profesional/**").hasRole("ADMINISTRATIVO")
+            .requestMatchers("/administrativo/**").hasRole("ADMINISTRATIVO")
+            .requestMatchers("/pago/**").hasRole("ADMINISTRATIVO")
+            .requestMatchers("/visita").hasRole("PROFESIONAL")
+            .requestMatchers("/chequeo").hasRole("PROFESIONAL")
+            .requestMatchers("/api/cliente").hasRole("ADMINISTRATIVO")
             .and().httpBasic(Customizer.withDefaults())
             .formLogin().and().logout().logoutUrl("/logout").logoutSuccessUrl("/").invalidateHttpSession(true)
             .deleteCookies("JSESSIONID");
