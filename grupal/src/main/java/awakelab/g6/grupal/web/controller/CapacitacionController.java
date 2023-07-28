@@ -58,7 +58,7 @@ public String crearCapacitaciones(Model model){
     training.setCustomer(service2.findById(Integer.parseInt(request.getParameter(
             "customerId"))).orElse(null));
       System.out.println(capacitacionRestController.create(training).getBody().toString());
-    return "listCapacitaciones";
+    return "redirect:/capacitacion";
   }
 
 

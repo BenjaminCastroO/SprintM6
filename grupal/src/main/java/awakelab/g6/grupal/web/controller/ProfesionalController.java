@@ -48,7 +48,7 @@ private final UsuarioRestController usuarioRestController;
                          HttpServletRequest request){
         professional.setUserId(usuarioRestController.create(user).getBody().getId());
         profesionalRestController.create(professional);
-        return "profesional";
+        return "redirect:/profesional";
     }
     @GetMapping("/u/{Id}")
     public String editProfesional(@PathVariable int Id

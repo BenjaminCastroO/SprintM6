@@ -16,18 +16,30 @@
     <p>Por favor, complete el siguiente formulario para contactarse con nosotros. ¡Gracias por su interés!</p>
 
     <h2>Formulario de Contacto</h2>
+    <div class="container">
     <form action="contacto" method="post" th:action="@{/contacto}">
-      <label for="nombre">Nombre:</label>
-      <input type="text" id="nombre" name="nombre" required>
+      <div class="row">
+        <div class="col">
+         <label class="form-label" for="nombre">Nombre:</label>
+         <input class="form-control" type="text" id="nombre" name="nombre" required>
+        </div>
+      </div>
 
-      <label for="email">Email:</label>
-      <input type="email" id="email" name="email" required>
+      <div class="row">
+        <div class="col">
+         <label class="form-label" for="email">Email:</label>
+         <input class="form-control" type="email" id="email" name="email" required>
+        </div>
+      </div>
 
       <br>
+      <div class="row">
+        <div class="col">
+         <label class="form-label" for="mensaje">Mensaje:</label>
+         <textarea class="form-control" id="mensaje" name="mensaje" rows="8" cols="60" required></textarea>
+        </div>
+      </div>
 
-      <label for="mensaje">Mensaje:</label>
-      <br>
-      <textarea id="mensaje" name="mensaje" rows="8" cols="60" required></textarea>
 
       <br>
 
