@@ -1,7 +1,6 @@
 package awakelab.g6.grupal.web.controller;
 
 import awakelab.g6.grupal.model.domain.dto.CheckList;
-import awakelab.g6.grupal.model.domain.dto.Visit;
 import awakelab.g6.grupal.web.service.ListaChequeoService;
 import awakelab.g6.grupal.web.service.VisitaService;
 import org.springframework.http.HttpStatus;
@@ -14,10 +13,10 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/chequeo")
-public class ListaChequeoRestController {
+public class ChequeoRestController {
   private final ListaChequeoService service;
   private final VisitaService visitaService;
-  public ListaChequeoRestController(ListaChequeoService service, VisitaService visitaService){
+  public ChequeoRestController(ListaChequeoService service, VisitaService visitaService){
     this.service = service;
     this.visitaService = visitaService;
   }

@@ -5,8 +5,6 @@ import awakelab.g6.grupal.model.domain.dto.Training;
 import awakelab.g6.grupal.web.service.CapacitacionService;
 import awakelab.g6.grupal.web.service.ClienteService;
 import jakarta.servlet.http.HttpServletRequest;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
