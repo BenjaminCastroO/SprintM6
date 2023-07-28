@@ -64,8 +64,9 @@ mvn spring-boot:run
 5. Para probar las distintas funcionalidades del sistema logea desde alguno de los siguientes usuarios: **cliente** username: "cliente" password: "hola1234", **administrativo** username: "administrativo" password: "hola1234", **profesional** username: "profesional" password: "hola1234".
 
 ## Autores
-Benjamín Castro https://github.com/BenjaminCastroO/SprintM6.git
-Pedro Díaz https://github.com/pediazr/SprintM6.git
+1. Benjamín Castro https://github.com/BenjaminCastroO/SprintM6.git
+2. Pedro Díaz https://github.com/pediazr/SprintM6.git
+
 Este proyecto fue desarrollado por el equipo de Prevención Riesgos S.A.
 
 
