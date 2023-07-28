@@ -225,11 +225,11 @@ VALUES
 
 INSERT INTO chequeo (visita_id, detalle, estado)
 VALUES
-  (6, 'Chequeo 1', 'Pendiente'),
-  (7, 'Chequeo 2', 'Completado'),
-  (8, 'Chequeo 3', 'Pendiente'),
-  (9, 'Chequeo 4', 'Completado'),
-  (10, 'Chequeo 5', 'Pendiente');
+  (1, 'Chequeo 1', 'Pendiente'),
+  (2, 'Chequeo 2', 'Completado'),
+  (1, 'Chequeo 3', 'Pendiente'),
+  (3, 'Chequeo 4', 'Completado'),
+  (2, 'Chequeo 5', 'Pendiente');
 
 
 INSERT INTO pago (cliente_id, monto, fecha_pago)
