@@ -27,7 +27,10 @@
         <tbody>
             <tr th:each ="usuario :${users}">
                 <td th:text="${usuario.getId()}"></td>
-                <td th:text="${usuario.getName()}"></td>
+                <td>
+                    <a th:href="@{/usuario/u/{Id}(Id=${usuario.getId()})}" th:text="${usuario.getName()}" class="btn btn-primary">id</a>
+                </td>
+
                 <td th:text="${usuario.getUsername()}"></td>
             </tr>
         </th:each>

@@ -1,5 +1,6 @@
 package awakelab.g6.grupal.web.controller;
 
+import awakelab.g6.grupal.model.domain.dto.Administrative;
 import awakelab.g6.grupal.model.domain.dto.Customer;
 import awakelab.g6.grupal.model.domain.dto.Training;
 import awakelab.g6.grupal.model.domain.dto.User;
@@ -33,27 +34,32 @@ private final UsuarioRestController usuarioRestController;
         model.addAttribute("users",users);
         return "listUsuarios";
 }
-    @GetMapping ("/create")
+    @GetMapping ("/c")
     public String crearUsuario(Model model){
         String op = "c";
         model.addAttribute("op",op);
         return "usuario";
     }
 
-    @PostMapping("/create")
+    @PostMapping("/c")
     public String create(@ModelAttribute User user, HttpServletRequest request){
         usuarioRestController.create(user);
         return "listUsuarios";
     }
-    @GetMapping ("/update")
-    public String updateUsuario(Model model){
-        String op = "u";
-        model.addAttribute("op",op);
+
+    @GetMapping("/u/{Id}")
+    public String editUsuario(@PathVariable int Id
+            , Model model){
+        model.addAttribute("usuario", service.findById(Id).get());
+        model.addAttribute("op","u");
         return "usuario";
     }
-    @PostMapping("/update")
-    public String update(@ModelAttribute User user, HttpServletRequest request){
+    @PostMapping("/u")
+    public String saveEditUser(
+            @ModelAttribute User user,
+            Model model){
+        System.out.println(user.toString());
         usuarioRestController.update(user);
-        return "listUsuarios";
+        return "redirect:/usuario";
     }
 }

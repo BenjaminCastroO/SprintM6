@@ -1,6 +1,7 @@
 package awakelab.g6.grupal.web.controller;
 
 import awakelab.g6.grupal.model.domain.dto.Administrative;
+import awakelab.g6.grupal.model.domain.dto.User;
 import awakelab.g6.grupal.web.service.AdministrativoService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -28,5 +29,11 @@ public class AdministrativoRestController {
     return service.create(administrative)
             .map(t-> new ResponseEntity<>(t, HttpStatus.CREATED))
             .orElse(new ResponseEntity<>(HttpStatus.CONFLICT));
+  }
+  @PatchMapping("/update")
+  public ResponseEntity<Administrative> update(@RequestBody Administrative administrative){
+    return service.update(administrative)
+            .map(t -> new ResponseEntity<>(t, HttpStatus.OK))
+            .orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND));
   }
 }

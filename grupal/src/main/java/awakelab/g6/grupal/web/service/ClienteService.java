@@ -12,4 +12,5 @@ public interface ClienteService {
 Optional<List<Customer>> findAll();
 Optional<Customer> findById(int id);
 Optional<Customer> create(Customer customer);
+  Optional<Customer> update(Customer customer);
 }

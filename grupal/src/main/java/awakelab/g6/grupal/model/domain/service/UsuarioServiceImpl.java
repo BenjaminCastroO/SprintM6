@@ -37,12 +37,7 @@ public class UsuarioServiceImpl implements UsuarioService {
   @Override
   public Optional<User> update(User user) {
     if (repository.existsById(user.getId())){
-      return Optional.of(
-              mapper.toUser(
-                      repository.save(
-                              mapper.toUsuario(user)
-                      )
-              ));
+      return Optional.of(mapper.toUser(repository.save(mapper.toUsuario(user))));
     }
     return Optional.of(new User());
   }

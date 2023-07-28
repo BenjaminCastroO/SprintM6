@@ -35,4 +35,11 @@ public class ClienteServiceImpl implements ClienteService {
   public Optional<Customer> create(Customer customer){
     return Optional.of(mapper.toCustomer(repository.save(mapper.toCliente(customer))));
   }
+  @Override
+  public Optional<Customer> update(Customer customer) {
+    if (repository.existsById(customer.getId())){
+      return Optional.of(mapper.toCustomer(repository.save(mapper.toCliente(customer))));
+    }
+    return Optional.of(new Customer());
+  }
 }

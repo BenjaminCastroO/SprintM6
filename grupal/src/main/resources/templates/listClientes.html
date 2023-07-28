@@ -29,7 +29,11 @@
             <tr th:each ="cliente :${customers}">
                 <td th:text="${cliente.getId()}"></td>
                 <td th:text="${cliente.getRut()}"></td>
-                <td th:text="${cliente.getName()}"></td>
+                <td>
+                    <a th:href="@{/cliente/u/{Id}(Id=${cliente.getId()})}"
+                       th:text="${cliente.getName()}" class="btn btn-primary">id
+                    </a>
+                </td>
                 <td th:text="${cliente.getUserId()}"></td>
             </tr>
         </th:each>

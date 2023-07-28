@@ -17,13 +17,29 @@
     <h2>Crear Cliente</h2>
   </div>
   <div class="container">
-    <form class="form" method="post" th:action="@{/cliente/create}">
+    <form class="form" method="post" th:action="@{/cliente/{op}(op=${op})}">
       <div class="row">
+        <div class="row">
+          <div class="col">
+            <label class="form-label" for="id">Id:</label>
+            <input th:if="${op=='u'}" class="form-control" type="hidden"
+                   id="id" name="id" th:value="${cliente.getId()}">
+          </div>
+        </div>
+        <div class="row">
+          <div class="col">
+            <label class="form-label" for="id">Id user:</label>
+            <input th:if="${op=='u'}" class="form-control" type="hidden"
+                   id="userId" name="userId" th:value="${cliente.getUserId()}">
+          </div>
+        </div>
           <div class="row">
             <div class="col">
               <label class="form-label" for="name">Nombre:</label>
               <input th:if="${op=='c'}" class="form-control" type="text"
                      id="name" name="name">
+              <input th:if="${op=='u'}" class="form-control" type="text"
+                     id="name" name="name" th:value="${cliente.getName()}">
             </div>
           </div>
 
@@ -32,6 +48,9 @@
             <label class="form-label" for="lastName">Apellido:</label>
             <input th:if="${op=='c'}" class="form-control" type="text"
                    id="lastName" name="lastName">
+            <input th:if="${op=='u'}" class="form-control" type="text"
+                   id="lastName" name="lastName"
+                   th:value="${cliente.getLastName()}">
           </div>
         </div>
         <div class="row">
@@ -39,6 +58,9 @@
             <label class="form-label" for="username">Username:</label>
             <input th:if="${op=='c'}" class="form-control" type="text"
                    id="username" name="username">
+            <input th:if="${op=='u'}" class="form-control" type="text"
+                   id="username" name="username"
+                   th:value="${usuario.getUsername()}">
           </div>
         </div>
         <div class="row">
@@ -46,6 +68,9 @@
             <label class="form-label" for="password">Password:</label>
             <input th:if="${op=='c'}" class="form-control" type="password"
                    id="password" name="password">
+            <input th:if="${op=='u'}" class="form-control" type="text"
+                   id="password" name="password"
+                   th:value="${usuario.getPassword()}">
           </div>
         </div>
         <div class="row">
@@ -53,6 +78,9 @@
             <label class="form-label" for="rut">RUT:</label>
             <input th:if="${op=='c'}" class="form-control" type="text"
                    id="rut" name="rut">
+            <input th:if="${op=='u'}" class="form-control" type="text"
+                   id="rut" name="rut"
+                   th:value="${cliente.getRut()}">
           </div>
         </div>
         <div class="row">
@@ -60,6 +88,9 @@
             <label class="form-label" for="mail">e-mail:</label>
             <input th:if="${op=='c'}" class="form-control" type="text"
                    id="mail" name="mail">
+            <input th:if="${op=='u'}" class="form-control" type="text"
+                   id="mail" name="mail"
+                   th:value="${cliente.getMail()}">
           </div>
         </div>
         <div class="row">
@@ -67,6 +98,9 @@
             <label class="form-label" for="telephone">Teléfono:</label>
             <input th:if="${op=='c'}" class="form-control" type="text"
                    id="telephone" name="telephone">
+            <input th:if="${op=='u'}" class="form-control" type="text"
+                   id="telephone" name="telephone"
+                   th:value="${cliente.getTelephone()}">
           </div>
         </div>
         <div class="row">
@@ -74,6 +108,9 @@
             <label class="form-label" for="afp">AFP:</label>
             <input th:if="${op=='c'}" class="form-control" type="text"
                    id="afp" name="afp">
+            <input th:if="${op=='u'}" class="form-control" type="text"
+                   id="afp" name="afp"
+                   th:value="${cliente.getAfp()}">
           </div>
         </div>
         <div class="row">
@@ -85,6 +122,13 @@
               <option  value="isapre">Isapre</option>
               <option  value="fonasa">Fonasa</option>
             </select>
+            <select th:if="${op=='u'}" class="form-select" id="healthcare"
+                    name="healthcare"
+                    aria-label="Default select example">
+              <option  selected th:value="${cliente.getHealthcare()}"></option>
+              <option  value="isapre">Isapre</option>
+              <option  value="fonasa">Fonasa</option>
+            </select>
           </div>
         </div>
         <div class="row">
@@ -93,6 +137,9 @@
             <input th:if="${op=='c'}" class="form-control" type="text"
                    id="direction"
                    name="direction">
+            <input th:if="${op=='u'}" class="form-control" type="text"
+                   id="direction" name="direction"
+                   th:value="${cliente.getDirection()}">
           </div>
         </div>
         <div class="row">
@@ -100,6 +147,9 @@
             <label class="form-label" for="district">Comuna:</label>
             <input th:if="${op=='c'}" class="form-control" type="text"
                    id="district" name="district">
+            <input th:if="${op=='u'}" class="form-control" type="text"
+                   id="district" name="district"
+                   th:value="${cliente.getDistrict()}">
           </div>
         </div>
         <div class="row">
@@ -107,6 +157,9 @@
             <label class="form-label" for="age">Edad:</label>
             <input th:if="${op=='c'}" class="form-control" type="number"
                    id="age" name="age">
+            <input th:if="${op=='u'}" class="form-control" type="number"
+                   id="age" name="age"
+                   th:value="${cliente.getAge()}">
           </div>
         </div>
 

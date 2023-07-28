@@ -1,6 +1,7 @@
 package awakelab.g6.grupal.model.domain.service;
 
 import awakelab.g6.grupal.model.domain.dto.Administrative;
+import awakelab.g6.grupal.model.domain.dto.User;
 import awakelab.g6.grupal.model.persistence.mapper.AdministrativeMapper;
 import awakelab.g6.grupal.model.persistence.repository.AdministrativoRepository;
 import awakelab.g6.grupal.web.service.AdministrativoService;
@@ -33,5 +34,12 @@ public class AdministrativoServiceImpl implements AdministrativoService {
   @Override
   public Optional<Administrative> create(Administrative administrative){
     return Optional.of(mapper.toAdministrative(repository.save(mapper.toAdministrativo(administrative))));
+  }
+  @Override
+  public Optional<Administrative> update(Administrative administrative) {
+    if (repository.existsById(administrative.getId())){
+      return Optional.of(mapper.toAdministrative(repository.save(mapper.toAdministrativo(administrative))));
+    }
+    return Optional.of(new Administrative());
   }
 }

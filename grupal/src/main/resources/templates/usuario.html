@@ -17,14 +17,16 @@
     <h2>Crear Usuarios</h2>
   </div>
   <div class="container">
-     <form class ="form" method="post" th:action="@{/usuario/create}">
+     <form class ="form" method="post" th:action="@{/usuario/{op}(op=${op})}">
       <div class="row">
         <div class="row">
           <div class="col">
             <label class="form-label" for="id">Id:</label>
-            <input th:if="${op=='r'}" class="form-control" type="text"
+            <input th:if="${op=='r'}" class="form-control" type="number"
                    id="id" name="id" disabled
                    th:value="${usuario.getId()}">
+            <input th:if="${op=='u'}" class="form-control" type="hidden"
+                   id="id" name="id" th:value="${usuario.getId()}">
           </div>
         </div>
 
@@ -35,10 +37,10 @@
                      id="name" name="name">
               <input th:if="${op=='r'}" class="form-control" type="text"
                      id="name" name="name" disabled
-                     th:value="${usuario.getNombre()}">
+                     th:value="${usuario.getName()}">
               <input th:if="${op=='u'}" class="form-control"
                      type="text" id="name" name="name"
-                     th:value="${usuario.getNombre()}">
+                     th:value="${usuario.getName()}">
           </div>
         </div>
 
@@ -49,10 +51,10 @@
                    id="username" name="username">
             <input th:if="${op=='r'}" class="form-control" type="text" disabled
                    id="username" name="username"
-                   th:value="${usuario.getDetalle()}">
+                   th:value="${usuario.getUsername()}">
             <input th:if="${op=='u'}" class="form-control" type="text"
                    id="username" name="username"
-                   th:value="${usuario.getDetalle()}">
+                   th:value="${usuario.getUsername()}">
           </div>
         </div>
 
@@ -63,10 +65,10 @@
                    id="password" name="password">
             <input th:if="${op=='r'}" class="form-control" type="text"
                    id="password" name="password" disabled
-                   th:value="${usuario.getFecha()}">
+                   th:value="${usuario.getPassword()}">
             <input th:if="${op=='u'}" class="form-control" type="text"
                    id="password" name="password"
-                   th:value="${usuario.getFecha()}">
+                   th:value="${usuario.getPassword()}">
           </div>
         </div>
 

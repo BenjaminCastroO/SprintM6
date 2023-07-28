@@ -1,15 +1,14 @@
 package awakelab.g6.grupal.web.controller;
 
 import awakelab.g6.grupal.model.domain.dto.Administrative;
+import awakelab.g6.grupal.model.domain.dto.Customer;
 import awakelab.g6.grupal.model.domain.dto.User;
 import awakelab.g6.grupal.web.service.AdministrativoService;
+import awakelab.g6.grupal.web.service.UsuarioService;
 import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -17,13 +16,15 @@ import java.util.List;
 @RequestMapping("/administrativo")
 public class AdministrativoController {
 private final AdministrativoService service;
+private final UsuarioService serviceUsuario;
 private final AdministrativoRestController administrativoRestController;
 private final UsuarioRestController usuarioRestController;
 
     public AdministrativoController(AdministrativoService service,
-                                    AdministrativoRestController administrativoRestController,
+                                    UsuarioService serviceUsuario, AdministrativoRestController administrativoRestController,
                                     UsuarioRestController usuarioRestController) {
         this.service = service;
+        this.serviceUsuario = serviceUsuario;
         this.administrativoRestController = administrativoRestController;
         this.usuarioRestController = usuarioRestController;
     }
@@ -35,14 +36,14 @@ private final UsuarioRestController usuarioRestController;
         model.addAttribute("administratives",administratives);
         return "listAdministrativos";
 }
-    @GetMapping ("/create")
+    @GetMapping ("/c")
     public String crearAdministrativo(Model model){
         String op = "c";
         model.addAttribute("op",op);
         return "administrativo";
     }
 
-    @PostMapping("/create")
+    @PostMapping("/c")
     public String create(@ModelAttribute Administrative administrative,
                          @ModelAttribute User user,
                          HttpServletRequest request){
@@ -50,5 +51,23 @@ private final UsuarioRestController usuarioRestController;
         administrativoRestController.create(administrative);
         return "administrativo";
     }
-
+    @GetMapping("/u/{Id}")
+    public String editAdmin(@PathVariable int Id, Model model){
+        model.addAttribute("admin", service.findById(Id).get());
+        model.addAttribute("usuario",
+                serviceUsuario.findById(service.findById(Id).get().getUserId()).get());
+        model.addAttribute("op","u");
+        return "administrativo";
+    }
+    @PostMapping("/u")
+    public String saveEditAdmin(
+            @ModelAttribute Administrative administrative, @ModelAttribute User user,
+            Model model){
+        System.out.println(administrative.toString());
+        System.out.println(user.toString());
+        user.setId(administrative.getUserId());
+        usuarioRestController.update(user);
+        administrativoRestController.update(administrative);
+        return "redirect:/administrativo";
+    }
 }

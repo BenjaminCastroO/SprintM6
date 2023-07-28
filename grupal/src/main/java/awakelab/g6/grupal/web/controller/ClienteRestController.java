@@ -31,4 +31,10 @@ public class ClienteRestController {
             .map(t-> new ResponseEntity<>(t, HttpStatus.CREATED))
             .orElse(new ResponseEntity<>(HttpStatus.CONFLICT));
   }
+  @PatchMapping("/update")
+  public ResponseEntity<Customer> update(@RequestBody Customer customer){
+    return service.update(customer)
+            .map(t -> new ResponseEntity<>(t, HttpStatus.OK))
+            .orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND));
+  }
 }
