@@ -130,7 +130,7 @@ describe visita;
 -- select * from usuario;
 INSERT INTO usuario (nombre, username, password)
 VALUES
-  ('John Doe', 'johndoe', '$2a$12$XOuZ4PkriYv7Sf8.3/su7uCTagMF26nHa6KUA/8EDWYoYcclGfDa2'),
+  ('John Doe', 'administrativo', '$2a$12$XOuZ4PkriYv7Sf8.3/su7uCTagMF26nHa6KUA/8EDWYoYcclGfDa2'),
   ('Jane Smith', 'janesmith', '$2a$12$XOuZ4PkriYv7Sf8.3/su7uCTagMF26nHa6KUA/8EDWYoYcclGfDa2'),
   ('Michael Johnson', 'michaeljohnson', '$2a$12$XOuZ4PkriYv7Sf8.3/su7uCTagMF26nHa6KUA/8EDWYoYcclGfDa2'),
   ('Emily Brown', 'emilybrown', '$2a$12$XOuZ4PkriYv7Sf8.3/su7uCTagMF26nHa6KUA/8EDWYoYcclGfDa2'),
@@ -140,7 +140,7 @@ VALUES
   ('Sophia Anderson', 'sophiaanderson', '$2a$12$XOuZ4PkriYv7Sf8.3/su7uCTagMF26nHa6KUA/8EDWYoYcclGfDa2'),
   ('James Thomas', 'jamesthomas', '$2a$12$XOuZ4PkriYv7Sf8.3/su7uCTagMF26nHa6KUA/8EDWYoYcclGfDa2'),
   ('Emma Jackson', 'emmajackson', '$2a$12$XOuZ4PkriYv7Sf8.3/su7uCTagMF26nHa6KUA/8EDWYoYcclGfDa2'),
-  ('Mary Johnson', 'maryjohnson', '$2a$12$XOuZ4PkriYv7Sf8.3/su7uCTagMF26nHa6KUA/8EDWYoYcclGfDa2'),
+   ('Mary Johnson', 'cliente', '$2a$12$XOuZ4PkriYv7Sf8.3/su7uCTagMF26nHa6KUA/8EDWYoYcclGfDa2'),
   ('William Smith', 'williamsmith', '$2a$12$XOuZ4PkriYv7Sf8.3/su7uCTagMF26nHa6KUA/8EDWYoYcclGfDa2'),
   ('Sophia Miller', 'sophiamiller', '$2a$12$XOuZ4PkriYv7Sf8.3/su7uCTagMF26nHa6KUA/8EDWYoYcclGfDa2'),
   ('James Brown', 'jamesbrown', '$2a$12$XOuZ4PkriYv7Sf8.3/su7uCTagMF26nHa6KUA/8EDWYoYcclGfDa2'),
@@ -150,7 +150,7 @@ VALUES
   ('Noah Johnson', 'noahjohnson', '$2a$12$XOuZ4PkriYv7Sf8.3/su7uCTagMF26nHa6KUA/8EDWYoYcclGfDa2'),
   ('Isabella Smith', 'isabellasmith', '$2a$12$XOuZ4PkriYv7Sf8.3/su7uCTagMF26nHa6KUA/8EDWYoYcclGfDa2'),
   ('Mia Miller', 'miamiller', '$2a$12$XOuZ4PkriYv7Sf8.3/su7uCTagMF26nHa6KUA/8EDWYoYcclGfDa2'),
-  ('Andrew Davis', 'andrewdavis', '$2a$12$XOuZ4PkriYv7Sf8.3/su7uCTagMF26nHa6KUA/8EDWYoYcclGfDa2'),
+  ('Andrew Davis', 'profesional', '$2a$12$XOuZ4PkriYv7Sf8.3/su7uCTagMF26nHa6KUA/8EDWYoYcclGfDa2'),
   ('Emma Wilson', 'emmawilson', '$2a$12$XOuZ4PkriYv7Sf8.3/su7uCTagMF26nHa6KUA/8EDWYoYcclGfDa2'),
   ('Matthew Thomas', 'matthewthomas', '$2a$12$XOuZ4PkriYv7Sf8.3/su7uCTagMF26nHa6KUA/8EDWYoYcclGfDa2'),
   ('Olivia Garcia', 'oliviagarcia', '$2a$12$XOuZ4PkriYv7Sf8.3/su7uCTagMF26nHa6KUA/8EDWYoYcclGfDa2'),
