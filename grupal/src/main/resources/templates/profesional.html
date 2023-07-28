@@ -107,6 +107,9 @@
             <label class="form-label" for="position">Cargo:</label>
             <input th:if="${op=='c'}" class="form-control" type="text"
                    id="position" name="position">
+            <input th:if="${op=='u'}" class="form-control" type="text"
+                   id="position" name="position"
+                   th:value="${profesional.getPosition()}">
           </div>
         </div>
         <div class="row pt-4">
