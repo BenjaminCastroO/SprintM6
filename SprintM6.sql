@@ -1,4 +1,3 @@
-use prevencion;
 CREATE DATABASE prevencion;
 USE prevencion;
 
