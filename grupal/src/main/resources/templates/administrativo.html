@@ -15,7 +15,8 @@
   </div>
 
   <div class="container">
-    <h2>Crear Administrativo</h2>
+    <h2 th:if="${op=='c'}">Crear Administrativo</h2>
+    <h2 th:if="${op=='u'}">Editar Administrativo</h2>
   </div>
   <div class="container">
     <form class="form" method="post"

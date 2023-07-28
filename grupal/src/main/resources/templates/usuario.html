@@ -14,7 +14,8 @@
   </div>
 
   <div class="container">
-    <h2>Crear Usuarios</h2>
+    <h2 th:if="${op=='c'}">Crear Usuarios</h2>
+    <h2 th:if="${op=='u'}">Editar Usuarios</h2>
   </div>
   <div class="container">
      <form class ="form" method="post" th:action="@{/usuario/{op}(op=${op})}">
