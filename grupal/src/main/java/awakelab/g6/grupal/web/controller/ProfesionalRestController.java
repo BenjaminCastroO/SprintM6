@@ -1,5 +1,6 @@
 package awakelab.g6.grupal.web.controller;
 
+import awakelab.g6.grupal.model.domain.dto.Customer;
 import awakelab.g6.grupal.model.domain.dto.Professional;
 import awakelab.g6.grupal.web.service.ProfesionalService;
 import org.springframework.http.HttpStatus;
@@ -27,5 +28,11 @@ public class ProfesionalRestController {
     return service.create(professional)
             .map(t-> new ResponseEntity<>(t, HttpStatus.CREATED))
             .orElse(new ResponseEntity<>(HttpStatus.CONFLICT));
+  }
+  @PatchMapping("/update")
+  public ResponseEntity<Professional> update(@RequestBody Professional professional){
+    return service.update(professional)
+            .map(t -> new ResponseEntity<>(t, HttpStatus.OK))
+            .orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND));
   }
 }

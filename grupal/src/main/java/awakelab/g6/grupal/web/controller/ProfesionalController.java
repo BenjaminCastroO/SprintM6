@@ -1,15 +1,14 @@
 package awakelab.g6.grupal.web.controller;
 
+import awakelab.g6.grupal.model.domain.dto.Customer;
 import awakelab.g6.grupal.model.domain.dto.Professional;
 import awakelab.g6.grupal.model.domain.dto.User;
 import awakelab.g6.grupal.web.service.ProfesionalService;
+import awakelab.g6.grupal.web.service.UsuarioService;
 import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -17,12 +16,14 @@ import java.util.List;
 @RequestMapping("/profesional")
 public class ProfesionalController {
 private final ProfesionalService service;
+private final UsuarioService serviceUsuario;
 private final ProfesionalRestController profesionalRestController;
 private final UsuarioRestController usuarioRestController;
 
     public ProfesionalController(ProfesionalService service,
-                                 ProfesionalRestController profesionalRestController, UsuarioRestController usuarioRestController) {
+                                 UsuarioService serviceUsuario, ProfesionalRestController profesionalRestController, UsuarioRestController usuarioRestController) {
         this.service = service;
+        this.serviceUsuario = serviceUsuario;
         this.profesionalRestController = profesionalRestController;
         this.usuarioRestController = usuarioRestController;
     }
@@ -34,14 +35,14 @@ private final UsuarioRestController usuarioRestController;
         model.addAttribute("professionals",professionals);
         return "listProfesionales";
 }
-    @GetMapping ("/create")
+    @GetMapping ("/c")
     public String crearProfesional(Model model){
         String op = "c";
         model.addAttribute("op",op);
         return "profesional";
     }
 
-    @PostMapping("/create")
+    @PostMapping("/c")
     public String create(@ModelAttribute Professional professional,
                          @ModelAttribute User user,
                          HttpServletRequest request){
@@ -49,5 +50,25 @@ private final UsuarioRestController usuarioRestController;
         profesionalRestController.create(professional);
         return "profesional";
     }
-
+    @GetMapping("/u/{Id}")
+    public String editProfesional(@PathVariable int Id
+            , Model model){
+        model.addAttribute("profesional", service.findById(Id).get());
+        model.addAttribute("usuario",
+                serviceUsuario.findById(service.findById(Id).get().getUserId()).get());
+        model.addAttribute("op","u");
+        return "profesional";
+    }
+    @PostMapping("/u")
+    public String saveEditProfesional(
+            @ModelAttribute Professional professional,
+            @ModelAttribute User user,
+            Model model){
+        System.out.println(professional.toString());
+        System.out.println(user.toString());
+        user.setId(professional.getUserId());
+        usuarioRestController.update(user);
+        profesionalRestController.update(professional);
+        return "redirect:/profesional";
+    }
 }

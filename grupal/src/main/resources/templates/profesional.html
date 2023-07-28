@@ -18,13 +18,30 @@
     <h2>Crear Profesional</h2>
   </div>
   <div class="container">
-    <form class="form" method="post" th:action="@{/profesional/create}">
+    <form class="form" method="post" th:action="@{/profesional/{op}(op=${op})}">
       <div class="row">
+        <div class="row">
+          <div class="col">
+            <label class="form-label" for="id">Id:</label>
+            <input th:if="${op=='u'}" class="form-control" type="hidden"
+                   id="id" name="id" th:value="${profesional.getId()}">
+          </div>
+        </div>
+        <div class="row">
+          <div class="col">
+            <label class="form-label" for="id">Id user:</label>
+            <input th:if="${op=='u'}" class="form-control" type="hidden"
+                   id="userId" name="userId"
+                   th:value="${profesional.getUserId()}">
+          </div>
+        </div>
           <div class="row">
             <div class="col">
               <label class="form-label" for="name">Nombre:</label>
               <input th:if="${op=='c'}" class="form-control" type="text"
                      id="name" name="name">
+              <input th:if="${op=='u'}" class="form-control" type="text"
+                     id="name" name="name" th:value="${profesional.getName()}">
             </div>
           </div>
 
@@ -33,6 +50,9 @@
             <label class="form-label" for="lastName">Apellido:</label>
             <input th:if="${op=='c'}" class="form-control" type="text"
                    id="lastName" name="lastName">
+            <input th:if="${op=='u'}" class="form-control" type="text"
+                   id="lastName" name="lastName"
+                   th:value="${profesional.getLastName()}">
           </div>
         </div>
         <div class="row">
@@ -40,6 +60,9 @@
             <label class="form-label" for="username">Username:</label>
             <input th:if="${op=='c'}" class="form-control" type="text"
                    id="username" name="username">
+            <input th:if="${op=='u'}" class="form-control" type="text"
+                   id="username" name="username"
+                   th:value="${usuario.getUsername()}">
           </div>
         </div>
         <div class="row">
@@ -47,6 +70,9 @@
             <label class="form-label" for="password">Password:</label>
             <input th:if="${op=='c'}" class="form-control" type="password"
                    id="password" name="password">
+            <input th:if="${op=='u'}" class="form-control" type="text"
+                   id="password" name="password"
+                   th:value="${usuario.getPassword()}">
           </div>
         </div>
         <div class="row">
@@ -54,6 +80,9 @@
             <label class="form-label" for="run">RUN:</label>
             <input th:if="${op=='c'}" class="form-control" type="text"
                    id="run" name="run">
+            <input th:if="${op=='u'}" class="form-control" type="text"
+                   id="run" name="run"
+                   th:value="${profesional.getRun()}">
           </div>
         </div>
         <div class="row">
@@ -61,6 +90,9 @@
             <label class="form-label" for="mail">e-mail:</label>
             <input th:if="${op=='c'}" class="form-control" type="text"
                    id="mail" name="mail">
+            <input th:if="${op=='u'}" class="form-control" type="text"
+                   id="mail" name="mail"
+                   th:value="${profesional.getMail()}">
           </div>
         </div>
         <div class="row">
@@ -68,6 +100,9 @@
             <label class="form-label" for="telephone">Teléfono:</label>
             <input th:if="${op=='c'}" class="form-control" type="text"
                    id="telephone" name="telephone">
+            <input th:if="${op=='u'}" class="form-control" type="text"
+                   id="telephone" name="telephone"
+                   th:value="${profesional.getTelephone()}">
           </div>
         </div>
         <div class="row">

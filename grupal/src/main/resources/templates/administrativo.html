@@ -28,6 +28,13 @@
                    id="id" name="id" th:value="${admin.getId()}">
           </div>
         </div>
+        <div class="row">
+          <div class="col">
+            <label class="form-label" for="id">Id user:</label>
+            <input th:if="${op=='u'}" class="form-control" type="hidden"
+                   id="userId" name="userId" th:value="${admin.getUserId()}">
+          </div>
+        </div>
           <div class="row">
             <div class="col">
               <label class="form-label" for="name">Nombre:</label>
@@ -55,7 +62,7 @@
                    id="username" name="username">
             <input th:if="${op=='u'}" class="form-control" type="text"
                    id="username" name="username"
-                   th:value="${admin.getUsername()}">
+                   th:value="${usuario.getUsername()}">
           </div>
         </div>
         <div class="row">
@@ -65,7 +72,7 @@
                    id="password" name="password">
             <input th:if="${op=='u'}" class="form-control" type="text"
                    id="password" name="password"
-                   th:value="${admin.getPassword()}">
+                   th:value="${usuario.getPassword()}">
           </div>
         </div>
         <div class="row">

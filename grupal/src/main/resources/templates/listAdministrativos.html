@@ -2,7 +2,7 @@
 <html lang="es" xmlns:th="http://www.thymeleaf.com">
 <head>
     <meta charset="UTF-8">
-    <title>Bienvenidos - Lista de Profesionales</title>
+    <title>Bienvenidos - Lista de Administrativos</title>
     <link rel="stylesheet" href="/css/style.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
     <link href="https://cdn.datatables.net/1.13.5/css/jquery.dataTables.min.css" rel="stylesheet">
@@ -12,11 +12,11 @@
     <div th:replace="~{menu :: navegacion}"></div>
 
     <div class="container ">
-        <h2>Lista de Profesionales</h2>
-        <a href=""><button class="btn btn-dark">Crear profesional</button></a>
+        <h2>Lista de Administrativos</h2>
+        <a href=""><button class="btn btn-dark">Crear administrativo</button></a>
     </div>
     <div class = "col pt-4"></div>
-    <table class="table pt-4  table-bordered dataTable" id ="profesionales">
+    <table class="table pt-4  table-bordered dataTable" id ="administrativos">
         <thead class="table-dark pt-4">
         <tr>
             <th>Id</th>
@@ -26,17 +26,15 @@
         </tr>
         </thead>
         <tbody>
-            <tr th:each ="profesional :${professionals}">
-                <td th:text="${profesional.getId()}"></td>
-                <td th:text="${profesional.getRun()}"></td>
+            <tr th:each ="administrativo :${administratives}">
+                <td th:text="${administrativo.getId()}"></td>
+                <td th:text="${administrativo.getRun()}"></td>
                 <td>
-                    <a
-                            th:href="@{/profesional/u/{Id}(Id=${profesional.getId()})}"
-                       th:text="${profesional.getName()}"
-                            class="btn btn-primary">id
+                    <a th:href="@{/administrativo/u/{Id}(Id=${administrativo.getId()})}"
+                       th:text="${administrativo.getName()}" class="btn btn-primary">id
                     </a>
                 </td>
-                <td th:text="${profesional.getUserId()}"></td>
+                <td th:text="${administrativo.getUserId()}"></td>
             </tr>
         </th:each>
         </tbody>
@@ -49,7 +47,7 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js" integrity="sha384-fbbOQedDUMZZ5KreZpsbe1LCZPVmfTnH7ois6mU1QK+m14rQ1l2bGBq41eYeM/fS" crossorigin="anonymous"></script>
 <script>
     $(document).ready(function() {
-        $('#profesionales').DataTable();
+        $('#administrativos').DataTable();
     });
 </script>
 </body>

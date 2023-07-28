@@ -1,5 +1,6 @@
 package awakelab.g6.grupal.model.domain.service;
 
+import awakelab.g6.grupal.model.domain.dto.Customer;
 import awakelab.g6.grupal.model.domain.dto.Professional;
 import awakelab.g6.grupal.model.persistence.mapper.ProfessionalMapper;
 import awakelab.g6.grupal.model.persistence.repository.ProfesionalRepository;
@@ -33,5 +34,12 @@ public class ProfesionalServiceImpl implements ProfesionalService {
   @Override
   public Optional<Professional> create(Professional customer){
     return Optional.of(mapper.toProfessional(repository.save(mapper.toProfesional(customer))));
+  }
+  @Override
+  public Optional<Professional> update(Professional professional) {
+    if (repository.existsById(professional.getId())){
+      return Optional.of(mapper.toProfessional(repository.save(mapper.toProfesional(professional))));
+    }
+    return Optional.of(new Professional());
   }
 }

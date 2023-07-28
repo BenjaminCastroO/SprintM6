@@ -1,5 +1,6 @@
 package awakelab.g6.grupal.web.service;
 
+import awakelab.g6.grupal.model.domain.dto.Customer;
 import awakelab.g6.grupal.model.domain.dto.Professional;
 
 import java.util.List;
@@ -9,4 +10,5 @@ public interface ProfesionalService {
 Optional<List<Professional>> findAll();
 Optional<Professional> findById(int id);
 Optional<Professional> create(Professional professional);
+Optional<Professional> update(Professional professional);
 }
