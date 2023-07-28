@@ -15,7 +15,7 @@ El sistema proporciona funcionalidades para los siguientes casos de uso:
 
 4. **Listar Capacitación:** Muestra un listado de todas las capacitaciones programadas y realizadas, con detalles relevantes.
 
-5. **Login:** Permite a los usuarios autenticarse en el sistema para acceder a funcionalidades protegidas.
+5. **Login:** Permite a los usuarios autenticarse en el sistema para acceder a funcionalidades protegidas. El login permite ingresar con los usuarios que se registren en la bbdd.
 
 Además de los casos de uso iniciales, se han desarrollado las siguientes funcionalidades adicionales:
 
@@ -61,9 +61,11 @@ mvn spring-boot:run
 
 4. Accede a la aplicación en tu navegador web utilizando la URL: `http://localhost:8080`
 
+5. Para probar las distintas funcionalidades del sistema logea desde alguno de los siguientes usuarios: **cliente** username: "cliente" password: "hola1234", **administrativo** username: "administrativo" password: "hola1234", **profesional** username: "profesional" password: "hola1234".
 
 ## Autores
-
+Benjamín Castro https://github.com/BenjaminCastroO/SprintM6.git
+Pedro Díaz https://github.com/pediazr/SprintM6.git
 Este proyecto fue desarrollado por el equipo de Prevención Riesgos S.A.
 
 
